@@ -4,6 +4,7 @@ import me.drogolova.recipes.services.Ingredients;
 import me.drogolova.recipes.services.IngredientsServices;
 import me.drogolova.recipes.services.Recipes;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class IngredientsController {
         this.ingredientsServices = ingredientsServices;
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public void addIngredient(Ingredients ingredient) {
         ingredientsServices.addIngredient(ingredient);
     }
