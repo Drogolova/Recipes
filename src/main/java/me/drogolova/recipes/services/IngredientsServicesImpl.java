@@ -1,5 +1,6 @@
 package me.drogolova.recipes.services;
 
+import me.drogolova.recipes.model.Ingredients;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

@@ -1,11 +1,11 @@
 package me.drogolova.recipes.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import me.drogolova.recipes.services.Recipes;
+import me.drogolova.recipes.model.Recipes;
 import me.drogolova.recipes.services.RecipesServices;
 
 @RestController
@@ -18,12 +18,13 @@ public class RecipeController {
     }
 
     @PostMapping ("/add")
-    public void addRecipe(Recipes recipe) {
+    public ResponseEntity<Recipes> addRecipe(Recipes recipe) {
         recipesServices.addRecipe(recipe);
+        return ResponseEntity.ok(recipe);
     }
 
     @GetMapping("/get")
-    public Recipes recipes(Integer integer) {
-        return recipesServices.getRecipe(integer);
+    public ResponseEntity<Recipes> recipes(Integer integer) {
+        return ResponseEntity.ok(recipesServices.getRecipe(integer)) ;
     }
 }

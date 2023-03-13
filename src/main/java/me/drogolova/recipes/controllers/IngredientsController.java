@@ -1,8 +1,8 @@
 package me.drogolova.recipes.controllers;
 
-import me.drogolova.recipes.services.Ingredients;
+import me.drogolova.recipes.model.Ingredients;
 import me.drogolova.recipes.services.IngredientsServices;
-import me.drogolova.recipes.services.Recipes;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +19,15 @@ public class IngredientsController {
     }
 
     @PostMapping("/add")
-    public void addIngredient(Ingredients ingredient) {
+    public ResponseEntity<Ingredients> addIngredient(Ingredients ingredient) {
+
         ingredientsServices.addIngredient(ingredient);
+        return ResponseEntity.ok(ingredient);
     }
 
     @GetMapping("/getIngredient")
-    public Ingredients getIngredient(Integer integer) {
-        return ingredientsServices.getIngredient(integer);
+    public ResponseEntity<Ingredients> getIngredient(Integer integer) {
+
+        return ResponseEntity.ok(ingredientsServices.getIngredient(integer));
     }
 }
